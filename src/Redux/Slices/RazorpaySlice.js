@@ -25,6 +25,7 @@ export const getRazorPayId = createAsyncThunk("/razorpay/getId", async () => {
 export const purchaseCourseBundle = createAsyncThunk("/purchaseCourse", async () => {
     try {
         const response = await axiosInstance.post("/payments/subscribe");
+        console.log(response)
         return response.data;
     } catch(error) {
         toast.error(error?.response?.data?.message);
@@ -68,7 +69,7 @@ export const cancelCourseBundle = createAsyncThunk("/payments/cancel", async () 
             success: (data) => {
                 return data?.data?.message
             },
-            error: "Failed to ubsubscrive"
+            error: "Failed to ubsubscribe"
         })
         return (await response).data;
     } catch(error) {
